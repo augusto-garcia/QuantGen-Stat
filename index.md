@@ -1,9 +1,10 @@
 ---
 title: Quantitative Genetics
-subtitle: Introduction
+subtitle: A Review of Statistics
 author: Antonio Augusto F Garcia
 mode : selfcontained
 framework: revealjs
+widgets : [mathjax]  # {mathjax, quiz, bootstrap}
 hitheme : zenburn
 revealjs:
   theme: night
@@ -16,7 +17,7 @@ bootstrap:
 
 # Quantitative Genetics
 
-## Introduction
+## A Review of Statistics
 
 <small>
 Instructor: [A Augusto F Garcia](http://about.me/augusto.garcia)
@@ -35,89 +36,117 @@ Some notes on the first slide
 
 # Content
 
-## (Lynch & Walsh Book)
-
-### Quantitative Traits
-### Seminal Papers
-### History
-### Major Goals
-
----
-
-# Quantitative Traits
-
-  - Metric nature
-  - Controled by many genes
-  - Polygenic, multifactorial
-  - Strong influence of environment
-  - Statistical methods (Statistical Genetics)
-  - Examples: grain yield, disease resistance, fitness,...
+### Expectation
+### Variance
+### Covariance
+### Regression
+### Correlation
 
 ---
 
+### Probability distribution
 
-# Seminal Papers
+- We will denote $z$ for a random variable (quantitative trait,
+  phenotype)
 
-  - Fisher (1918)
-    - Variance decomposition
-    - ANOVA
-    - (Experimental design, likelihood, evolution,...)
-  - Wright (1921)
-    - Path Analysis
-  - Cockerham (1954)
-    - Epistasis (orthogonal decomposition)
+- $p(z)$ (probability density function) 
 
 
----
+$\int_{-\infty}^{+\infty} p(z) dz = 1$
 
-# History
-
-## Early Ideas
-  - Mendel
-  - Darwin (1859)
-  - Galton (1889): regression toward mediocrity
-  - Pearson (1903)
-    - Interpretation of Galton's
-    - Response to selection
-    - Linear regression
+$P(z_1\leq z \leq z_2)=\int_{z_1}^{z_2}p(z) dz$
 
 ---
 
-## Galton e Pearson
+### Normal distribution
 
-![](./images/Fig1.jpg)
+$$f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\frac{-(x-\mu)^2}{2\sigma^{2}}}$$
 
-
----
-
-## Galton e Pearson
-![](./images/Fig2.jpg)
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
 
 ---
 
-# Early Days
+# Expectation
 
-  - Shull (1908)
-    - Genetic uniformity decreases variability (so, traits must have a
-      genetic basis)
-  - Ehle (1909)
-    - Segregation of 3 loci
-  - Johannsen (1903, 1909)
-    - Genotype and Phenotype
-    - Environmental influence on quantitative traits
+- First moment about the origin, **expected value**, expectation, mean
 
+$$E(z)=\mu=\int_{-\infty}^{+\infty} z \, p(z) \, dz$$
+
+- Properties
+
+  - $E(x+y)=E(x)+E(y)$
+  - $E(cx)=c E(x)$
+
+---
+
+# Variance
+
+- Second moment about the mean
+
+$$\sigma^2=\int_{-\infty}^{+\infty} (z-\mu)² \, p(z) \, dz=E[(z-\mu)^2]$$
+
+$$\sigma² = E(z^2)-[E(z)]^2$$
+
+If $z$ are deviations around the mean (e. g. after scaling)
+
+$\sigma^2=E(z^2)$
 
 ---
 
 
-# (Some) Goals of Quantitative Genetics
+## Joint Distribution
 
-  - Estimate the proportion of phenotypic variations explained by
-    genetic causes
-  - Consequences of inbreeding and heterosis
-  - Correlated responses to selection
-  - Breeding values
-  - Predict (or explain) genetic gains
+
+$$P(y_1 \leq y \leq y_2, \, x_1 \leq x \leq x_2) =
+\int_{y_1}^{y_2}\int_{x_1}^{x_2} p(x,y) \, dx\, dy$$
+
+
+- Conditional probabilities
+$$P(y_1 \leq y \leq y_2 | x) = \int_{y_1}^{y_2} p(y|x) \, dy$$
+
+- Remember that
+$$p(x,y)=p(y|x) \, p(x)$$
+
+- Expectation
+$$E[f(x,y)]=\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+f(x,y)\,p(x,y)\,dx \, dy$$
+
+---
+
+# Covariance
+
+$$\sigma(x,y)=E[(x-\mu_x)(y-\mu_y)]$$
+
+$$\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)$$
+
+
+---
+
+### Covariance
+
+- Measure of **linear association** between $x$ and $y$
+
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
+
+---
+
+## Useful Identities
+
+$a$ is a constant, $x$ and $y$ are random variables
+
+- $\sigma(x,x)=\sigma^2(x)$
+- $\sigma(a,x)=0$
+- $\sigma(ax,y)=a \, \sigma(x,y)$
+- $\sigma(ax,by)=ab \, \sigma(x,y)$
+- $\sigma^2(ax)=a^2\sigma^2(x)$
+- Very important:
+$$\sigma^2(x+y)=\sigma^2(x)+\sigma^2(y)+2\sigma(x,y)$$
+
+---
+
+# Regression
+
+
 
 ---
 

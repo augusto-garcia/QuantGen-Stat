@@ -22,7 +22,7 @@
     <div class="slides">
       <section class='' data-state='' id='slide-1'>
   <h1>Quantitative Genetics</h1>
-  <h2>Introduction</h2>
+  <h2>A Review of Statistics</h2>
 
 <p><small>
 Instructor: <a href="http://about.me/augusto.garcia">A Augusto F Garcia</a>
@@ -40,116 +40,122 @@ University of São Paulo (Brazil)</small></p>
 </section>
 <section class='' data-state='' id='slide-2'>
   <h1>Content</h1>
-  <h2>(Lynch &amp; Walsh Book)</h2>
+  <h3>Expectation</h3>
 
-<h3>Quantitative Traits</h3>
+<h3>Variance</h3>
 
-<h3>Seminal Papers</h3>
+<h3>Covariance</h3>
 
-<h3>History</h3>
+<h3>Regression</h3>
 
-<h3>Major Goals</h3>
+<h3>Correlation</h3>
 
 </section>
 <section class='' data-state='' id='slide-3'>
-  <h1>Quantitative Traits</h1>
+  <h3>Probability distribution</h3>
   <ul>
-<li>Metric nature</li>
-<li>Controled by many genes</li>
-<li>Polygenic, multifactorial</li>
-<li>Strong influence of environment</li>
-<li>Statistical methods (Statistical Genetics)</li>
-<li>Examples: grain yield, disease resistance, fitness,...</li>
+<li><p>We will denote \(z\) for a random variable (quantitative trait,
+phenotype)</p></li>
+<li><p>\(p(z)\) (probability density function) </p></li>
 </ul>
+
+<p>\(\int_{-\infty}^{+\infty} p(z) dz = 1\)</p>
+
+<p>\(P(z_1\leq z \leq z_2)=\int_{z_1}^{z_2}p(z) dz\)</p>
 
 </section>
 <section class='' data-state='' id='slide-4'>
-  <h1>Seminal Papers</h1>
-  <ul>
-<li>Fisher (1918)
+  <h3>Normal distribution</h3>
+  <p>\[f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\frac{-(x-\mu)^2}{2\sigma^{2}}}\]</p>
 
-<ul>
-<li>Variance decomposition</li>
-<li>ANOVA</li>
-<li>(Experimental design, likelihood, evolution,...)</li>
-</ul></li>
-<li>Wright (1921)
-
-<ul>
-<li>Path Analysis</li>
-</ul></li>
-<li>Cockerham (1954)
-
-<ul>
-<li>Epistasis (orthogonal decomposition)</li>
-</ul></li>
-</ul>
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 </section>
 <section class='' data-state='' id='slide-5'>
-  <h1>History</h1>
-  <h2>Early Ideas</h2>
+  <h1>Expectation</h1>
+  <ul>
+<li>First moment about the origin, <strong>expected value</strong>, expectation, mean</li>
+</ul>
+
+<p>\[E(z)=\mu=\int_{-\infty}^{+\infty} z \, p(z) \, dz\]</p>
 
 <ul>
-<li>Mendel</li>
-<li>Darwin (1859)</li>
-<li>Galton (1889): regression toward mediocrity</li>
-<li>Pearson (1903)
+<li><p>Properties</p>
 
 <ul>
-<li>Interpretation of Galton&#39;s</li>
-<li>Response to selection</li>
-<li>Linear regression</li>
+<li>\(E(x+y)=E(x)+E(y)\)</li>
+<li>\(E(cx)=c E(x)\)</li>
 </ul></li>
 </ul>
 
 </section>
 <section class='' data-state='' id='slide-6'>
-  <h2>Galton e Pearson</h2>
-  <p><img src="./images/Fig1.jpg" alt=""></p>
+  <h1>Variance</h1>
+  <ul>
+<li>Second moment about the mean</li>
+</ul>
+
+<p>\[\sigma^2=\int_{-\infty}^{+\infty} (z-\mu)² \, p(z) \, dz=E[(z-\mu)^2]\]</p>
+
+<p>\[\sigma² = E(z^2)-[E(z)]^2\]</p>
+
+<p>If \(z\) are deviations around the mean (e. g. after scaling)</p>
+
+<p>\(\sigma^2=E(z^2)\)</p>
 
 </section>
 <section class='' data-state='' id='slide-7'>
-  <h2>Galton e Pearson</h2>
-  <p><img src="./images/Fig2.jpg" alt=""></p>
+  <h2>Joint Distribution</h2>
+  <p>\[P(y_1 \leq y \leq y_2, \, x_1 \leq x \leq x_2) =
+\int_{y_1}^{y_2}\int_{x_1}^{x_2} p(x,y) \, dx\, dy\]</p>
+
+<ul>
+<li><p>Conditional probabilities
+\[P(y_1 \leq y \leq y_2 | x) = \int_{y_1}^{y_2} p(y|x) \, dy\]</p></li>
+<li><p>Remember that
+\[p(x,y)=p(y|x) \, p(x)\]</p></li>
+<li><p>Expectation
+\[E[f(x,y)]=\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+f(x,y)\,p(x,y)\,dx \, dy\]</p></li>
+</ul>
 
 </section>
 <section class='' data-state='' id='slide-8'>
-  <h1>Early Days</h1>
-  <ul>
-<li>Shull (1908)
+  <h1>Covariance</h1>
+  <p>\[\sigma(x,y)=E[(x-\mu_x)(y-\mu_y)]\]</p>
 
-<ul>
-<li>Genetic uniformity decreases variability (so, traits must have a
-genetic basis)</li>
-</ul></li>
-<li>Ehle (1909)
-
-<ul>
-<li>Segregation of 3 loci</li>
-</ul></li>
-<li>Johannsen (1903, 1909)
-
-<ul>
-<li>Genotype and Phenotype</li>
-<li>Environmental influence on quantitative traits</li>
-</ul></li>
-</ul>
+<p>\[\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)\]</p>
 
 </section>
 <section class='' data-state='' id='slide-9'>
-  <h1>(Some) Goals of Quantitative Genetics</h1>
+  <h3>Covariance</h3>
   <ul>
-<li>Estimate the proportion of phenotypic variations explained by
-genetic causes</li>
-<li>Consequences of inbreeding and heterosis</li>
-<li>Correlated responses to selection</li>
-<li>Breeding values</li>
-<li>Predict (or explain) genetic gains</li>
+<li>Measure of <strong>linear association</strong> between \(x\) and \(y\)</li>
 </ul>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 </section>
 <section class='' data-state='' id='slide-10'>
+  <h2>Useful Identities</h2>
+  <p>\(a\) is a constant, \(x\) and \(y\) are random variables</p>
+
+<ul>
+<li>\(\sigma(x,x)=\sigma^2(x)\)</li>
+<li>\(\sigma(a,x)=0\)</li>
+<li>\(\sigma(ax,y)=a \, \sigma(x,y)\)</li>
+<li>\(\sigma(ax,by)=ab \, \sigma(x,y)\)</li>
+<li>\(\sigma^2(ax)=a^2\sigma^2(x)\)</li>
+<li>Very important:
+\[\sigma^2(x+y)=\sigma^2(x)+\sigma^2(y)+2\sigma(x,y)\]</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-11'>
+  <h1>Regression</h1>
+  
+</section>
+<section class='' data-state='' id='slide-12'>
   <h1>Homework</h1>
   <ul>
 <li>Read Chapter 1 of Lynch and Walsh Book</li>
@@ -183,7 +189,21 @@ genetic causes</li>
       //{ src: './frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
       ]
   });
-  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+  </script>  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="./widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
 <script src="./highlighters/highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <!-- DONE LOADING HIGHLIGHTER JS FILES -->
