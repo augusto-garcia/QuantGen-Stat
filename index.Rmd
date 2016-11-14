@@ -132,13 +132,7 @@ $$\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)$$
 
 - Measure of **linear association** between $x$ and $y$
 
-```{r, echo=FALSE}
-x  <- rnorm(100, mean = 0, sd = 1)
-y  <- x + rnorm(100, 0, 10)
-d <- data.frame(x,y)
-g <- ggplot(d, aes(x=x, y=y)) + geom_point()
-g
-```
+![](./images/covariance.jpg)
 
 ---
 
@@ -151,6 +145,7 @@ $a$ is a constant, $x$ and $y$ are random variables
 - $\sigma(ax,y)=a \, \sigma(x,y)$
 - $\sigma(ax,by)=ab \, \sigma(x,y)$
 - $\sigma^2(ax)=a^2\sigma^2(x)$
+- $\sigma[(x+y),(w+z)]=\sigma(x,w)+\sigma(x,z)+\sigma(y,w)+\sigma(y,z)$
 - Very important:
 $$\sigma^2(x+y)=\sigma^2(x)+\sigma^2(y)+2\sigma(x,y)$$
 
@@ -158,10 +153,76 @@ $$\sigma^2(x+y)=\sigma^2(x)+\sigma^2(y)+2\sigma(x,y)$$
 
 # Regression
 
-
+- Linear models: a very good approximation for initial studies
+- For associations:
+$$y = \alpha + \beta x + e$$
+- $y$ predicted by the model:
+$$\hat{y} = \alpha + \beta x$$
+- $x$ is the predictor (or independent variable)
+- $y$ is the response (dependent variable)
+- $\alpha$ and $\beta$ are estimated to give the best fit to the joint
+  distribution of $x$ and $y$
 
 ---
 
+### Least Squares
+
+- Criteria: minimize $\bar{e^2}$
+- Recall that $e$ are deviations, so $E(e^2)$ are the residual variance
+- $e=y-\hat{y}=y-a-bx$
+- After some derivations:
+  $$a= \bar{y} - b\bar{x}$$
+  $$b=\frac{Cov(x,y)}{Var(x)}$$
+- This shows the relation between covariance (dependence) and the
+  slope of the linear regression
+
+---
+
+### Properties
+
+- $E[e]=0$
+- The amount of the variance of $y$ explained by the regression is
+  maximum
+- $Cov(x, e)=0$
+
+---
+
+# Correlation
+
+- A dimensionless measure of association
+  $$r(x,y)=\frac{Cov(x,y)}{\sqrt{Var(x)\,Var(y)}}$$
+- Therefore,
+  $$b(y,x)=r\sqrt{\frac{Var(y)}{Var(x)}}$$
+- $r^2$: coefficient of determination (proportion of variance of $y$
+  explained by the regression)
+  - Regression variance:
+  $$r^2 Var(y)$$
+  - Residual variance
+  $$(1-r^2) Var(y)$$
+
+---  ds:blue
+
+# Example
+
+### Correlation between genotypic and phenotypic values
+
+$$z = G + E$$
+
+$\sigma(z,G)=\sigma[(G + E),G]=\sigma(G,G)+\sigma(E,G)=\sigma^2_G + \sigma_{G,E}$
+
+$\rho(G,z)=\frac{\sigma_{G,z}}{\sigma_G \sigma_z}=\frac{\sigma^2_G +
+\sigma_{G,E}}{\sigma_G \sigma_z}$
+
+- If $\sigma_{G,E}=0$:
+
+$$H^2=\rho^2(G,z)=\frac{\sigma^2_G}{\sigma^2_z}$$
+
+know as the **heritability in the broad sense** (proportion of the
+total phenotypic variance that is explained by genetic factors)
+
+--- ds:indigo
+
+
 # Homework
 
-  - Read Chapter 1 of Lynch and Walsh Book
+  - Read Chapter 2 and 3 of Lynch and Walsh Book

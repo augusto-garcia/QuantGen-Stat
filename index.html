@@ -133,7 +133,7 @@ f(x,y)\,p(x,y)\,dx \, dy\]</p></li>
 <li>Measure of <strong>linear association</strong> between \(x\) and \(y\)</li>
 </ul>
 
-<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="./images/covariance.jpg" alt=""></p>
 
 </section>
 <section class='' data-state='' id='slide-10'>
@@ -146,6 +146,7 @@ f(x,y)\,p(x,y)\,dx \, dy\]</p></li>
 <li>\(\sigma(ax,y)=a \, \sigma(x,y)\)</li>
 <li>\(\sigma(ax,by)=ab \, \sigma(x,y)\)</li>
 <li>\(\sigma^2(ax)=a^2\sigma^2(x)\)</li>
+<li>\(\sigma[(x+y),(w+z)]=\sigma(x,w)+\sigma(x,z)+\sigma(y,w)+\sigma(y,z)\)</li>
 <li>Very important:
 \[\sigma^2(x+y)=\sigma^2(x)+\sigma^2(y)+2\sigma(x,y)\]</li>
 </ul>
@@ -153,12 +154,87 @@ f(x,y)\,p(x,y)\,dx \, dy\]</p></li>
 </section>
 <section class='' data-state='' id='slide-11'>
   <h1>Regression</h1>
-  
+  <ul>
+<li>Linear models: a very good approximation for initial studies</li>
+<li>For associations:
+\[y = \alpha + \beta x + e\]</li>
+<li>\(y\) predicted by the model:
+\[\hat{y} = \alpha + \beta x\]</li>
+<li>\(x\) is the predictor (or independent variable)</li>
+<li>\(y\) is the response (dependent variable)</li>
+<li>\(\alpha\) and \(\beta\) are estimated to give the best fit to the joint
+distribution of \(x\) and \(y\)</li>
+</ul>
+
 </section>
 <section class='' data-state='' id='slide-12'>
+  <h3>Least Squares</h3>
+  <ul>
+<li>Criteria: minimize \(\bar{e^2}\)</li>
+<li>Recall that \(e\) are deviations, so \(E(e^2)\) are the residual variance</li>
+<li>\(e=y-\hat{y}=y-a-bx\)</li>
+<li>After some derivations:
+\[a= \bar{y} - b\bar{x}\]
+\[b=\frac{Cov(x,y)}{Var(x)}\]</li>
+<li>This shows the relation between covariance (dependence) and the
+slope of the linear regression</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-13'>
+  <h3>Properties</h3>
+  <ul>
+<li>\(E[e]=0\)</li>
+<li>The amount of the variance of \(y\) explained by the regression is
+maximum</li>
+<li>\(Cov(x, e)=0\)</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-14'>
+  <h1>Correlation</h1>
+  <ul>
+<li>A dimensionless measure of association
+\[r(x,y)=\frac{Cov(x,y)}{\sqrt{Var(x)\,Var(y)}}\]</li>
+<li>Therefore,
+\[b(y,x)=r\sqrt{\frac{Var(y)}{Var(x)}}\]</li>
+<li>\(r^2\): coefficient of determination (proportion of variance of \(y\)
+explained by the regression)
+
+<ul>
+<li>Regression variance:
+\[r^2 Var(y)\]</li>
+<li>Residual variance
+\[(1-r^2) Var(y)\]</li>
+</ul></li>
+</ul>
+
+</section>
+<section class='' data-state='blue' id='slide-15'>
+  <h1>Example</h1>
+  <h3>Correlation between genotypic and phenotypic values</h3>
+
+<p>\[z = G + E\]</p>
+
+<p>\(\sigma(z,G)=\sigma[(G + E),G]=\sigma(G,G)+\sigma(E,G)=\sigma^2_G + \sigma_{G,E}\)</p>
+
+<p>\(\rho(G,z)=\frac{\sigma_{G,z}}{\sigma_G \sigma_z}=\frac{\sigma^2_G +
+\sigma_{G,E}}{\sigma_G \sigma_z}\)</p>
+
+<ul>
+<li>If \(\sigma_{G,E}=0\):</li>
+</ul>
+
+<p>\[H^2=\rho^2(G,z)=\frac{\sigma^2_G}{\sigma^2_z}\]</p>
+
+<p>know as the <strong>heritability in the broad sense</strong> (proportion of the
+total phenotypic variance that is explained by genetic factors)</p>
+
+</section>
+<section class='' data-state='indigo' id='slide-16'>
   <h1>Homework</h1>
   <ul>
-<li>Read Chapter 1 of Lynch and Walsh Book</li>
+<li>Read Chapter 2 and 3 of Lynch and Walsh Book</li>
 </ul>
 
 </section>
