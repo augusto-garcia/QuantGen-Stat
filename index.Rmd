@@ -20,7 +20,7 @@ bootstrap:
 ## A Review of Statistics
 
 <small>
-Instructor: [A Augusto F Garcia](http://about.me/augusto.garcia)
+Instructor: [A Augusto F Garcia](http:augustogarcia.me)
 / [Statistical Genetics Lab](http://statgen.esalq.usp.br) </small>
 
 <small>Department of Genetics, Luiz de Queiroz College of Agriculture,
@@ -168,7 +168,7 @@ $$\hat{y} = \alpha + \beta x$$
 ### Least Squares
 
 - Criteria: minimize $\bar{e^2}$
-- Recall that $e$ are deviations, so $E(e^2)$ are the residual variance
+- Recall that $e$ are deviations, so $E(e^2)$ is the residual variance
 - $e=y-\hat{y}=y-a-bx$
 - After some derivations:
   $$a= \bar{y} - b\bar{x}$$
