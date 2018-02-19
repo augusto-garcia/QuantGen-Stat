@@ -93,6 +93,76 @@ $\sigma^2=E(z^2)$
 
 ---
 
+### Formula
+
+$$\sigma^2=\frac{1}{n-1}\left[ \sum z^2 - \frac{(\sum z)^2}{n} \right]$$
+
+
+```r
+z <- c(1,3,4,8,2,7)
+z
+```
+
+```
+## [1] 1 3 4 8 2 7
+```
+
+```r
+a <- sum(data^2)
+a
+```
+
+```
+## [1] 143
+```
+
+```r
+b <- (sum(data))^2
+b
+```
+
+```
+## [1] 625
+```
+
+```r
+(v <- (a-b/6)/5)
+```
+
+```
+## [1] 7.766667
+```
+
+```r
+var(z)
+```
+
+```
+## [1] 7.766667
+```
+
+---
+
+## A measure of dispersion
+
+
+```r
+var(c(2,3,3,4,5,6,6))
+```
+
+```
+## [1] 2.47619
+```
+
+```r
+var(c(0,1,3,5,6,7,9))
+```
+
+```
+## [1] 10.61905
+```
+
+---
 
 ## Joint Distribution
 
@@ -119,6 +189,48 @@ $$\sigma(x,y)=E[(x-\mu_x)(y-\mu_y)]$$
 
 $$\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)$$
 
+---
+
+### Formula
+
+$$\sigma(x,y)=\frac{1}{n-1}\left[ \sum xy - \frac{\sum x \sum y}{n} \right]$$
+
+
+```r
+x <- c(1,3,4,8,2,7)
+y <- c(2,4,3,9,4,9)
+
+(a <- sum(x*y))
+```
+
+```
+## [1] 169
+```
+
+```r
+b <- (sum(x)*sum(y))
+b
+```
+
+```
+## [1] 775
+```
+
+```r
+(Cov <- (a-b/6)/5)
+```
+
+```
+## [1] 7.966667
+```
+
+```r
+cov(x,y)
+```
+
+```
+## [1] 7.966667
+```
 
 ---
 
@@ -126,7 +238,47 @@ $$\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)$$
 
 - Measure of **linear association** between $x$ and $y$
 
-![](./images/covariance.jpg)
+
+```
+##          [,1]     [,2]
+## [1,] 9.478564 2.506905
+## [2,] 2.506905 1.585234
+```
+
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png)
+
+---
+
+
+```
+##            [,1]       [,2]
+## [1,]  9.3107078 -0.3321092
+## [2,] -0.3321092  1.8144215
+```
+
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png)
+
+---
+
+
+```
+##           [,1]     [,2]
+## [1,] 10.787758 4.402369
+## [2,]  4.402369 2.104108
+```
+
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png)
+
+---
+
+
+```
+##           [,1]      [,2]
+## [1,]  8.550804 -3.714634
+## [2,] -3.714634  1.865854
+```
+
+![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8-1.png)
 
 ---
 
@@ -193,6 +345,42 @@ $$\hat{y} = \alpha + \beta x$$
   $$r^2 Var(y)$$
   - Residual variance
   $$(1-r^2) Var(y)$$
+
+--- ds:orange
+
+
+```
+## [1] 0.559017
+```
+
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-1.png)
+
+--- ds:orange
+
+
+```
+## [1] 0
+```
+
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10-1.png)
+
+--- ds:orange
+
+
+```
+## [1] 0.8944272
+```
+
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png)
+
+--- ds:orange
+
+
+```
+## [1] -0.9391486
+```
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-1.png)
 
 ---  ds:blue
 

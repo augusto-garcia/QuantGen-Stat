@@ -99,6 +99,33 @@ $\sigma^2=E(z^2)$
 
 ---
 
+### Formula
+
+$$\sigma^2=\frac{1}{n-1}\left[ \sum z^2 - \frac{(\sum z)^2}{n} \right]$$
+
+```{r}
+z <- c(1,3,4,8,2,7)
+z
+
+a <- sum(data^2)
+a
+b <- (sum(data))^2
+b
+(v <- (a-b/6)/5)
+
+var(z)
+```
+
+---
+
+## A measure of dispersion
+
+```{r}
+var(c(2,3,3,4,5,6,6))
+var(c(0,1,3,5,6,7,9))
+```
+
+---
 
 ## Joint Distribution
 
@@ -125,6 +152,24 @@ $$\sigma(x,y)=E[(x-\mu_x)(y-\mu_y)]$$
 
 $$\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)$$
 
+---
+
+### Formula
+
+$$\sigma(x,y)=\frac{1}{n-1}\left[ \sum xy - \frac{\sum x \sum y}{n} \right]$$
+
+```{r}
+x <- c(1,3,4,8,2,7)
+y <- c(2,4,3,9,4,9)
+
+(a <- sum(x*y))
+
+b <- (sum(x)*sum(y))
+b
+(Cov <- (a-b/6)/5)
+
+cov(x,y)
+```
 
 ---
 
@@ -132,7 +177,61 @@ $$\sigma(x,y)=E(xy)-\mu_x \mu_y=E(xy)-E(x)\,E(y)$$
 
 - Measure of **linear association** between $x$ and $y$
 
-![](./images/covariance.jpg)
+```{r, echo=F}
+library(MASS)
+Sigma <- matrix(c(10,2.5,2.5,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+#var(mvrnorm(n = 100, mu=rep(0, 2), Sigma)) #Var-cov estimated from n samples
+var(xy)
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+#r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
+
+---
+
+```{r, echo=F}
+Sigma <- matrix(c(10,0,0,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+var(xy)
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+#r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
+
+---
+
+```{r, echo=F}
+Sigma <- matrix(c(10,4,4,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+var(xy)
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+#r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
+
+---
+
+```{r, echo=F}
+Sigma <- matrix(c(10,-4.2,-4.2,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+var(xy)
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+#r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
 
 ---
 
@@ -199,6 +298,59 @@ $$\hat{y} = \alpha + \beta x$$
   $$r^2 Var(y)$$
   - Residual variance
   $$(1-r^2) Var(y)$$
+
+--- ds:orange
+
+```{r, echo=F}
+library(MASS)
+Sigma <- matrix(c(10,2.5,2.5,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
+
+--- ds:orange
+
+```{r, echo=F}
+Sigma <- matrix(c(10,0,0,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
+
+--- ds:orange
+
+```{r, echo=F}
+Sigma <- matrix(c(10,4,4,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
+
+--- ds:orange
+
+```{r, echo=F}
+Sigma <- matrix(c(10,-4.2,-4.2,2),2,2) #var-cov matrix
+xy <- mvrnorm(n = 100, mu=rep(0, 2), Sigma) #n values, with given means mu and var-cov matrix
+r <- Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]) #Correlation relative to Sigma
+r
+data <- data.frame(x=xy[,1],y=xy[,2])
+g <- ggplot(data, aes(x,y))
+g <- g + geom_point()
+g
+```
 
 ---  ds:blue
 
