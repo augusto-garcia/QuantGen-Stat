@@ -28,6 +28,7 @@ University of São Paulo (Brazil)</small>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+  
 *** =pnotes
 
 Some notes on the first slide
@@ -60,7 +61,7 @@ $P(z_1\leq z \leq z_2)=\int_{z_1}^{z_2}p(z) dz$
 
 ### Normal distribution
 
-$$f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\frac{-(x-\mu)^2}{2\sigma^{2}}}$$
+$$f(z)=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\frac{-(z-\mu)^2}{2\sigma^{2}}}$$
 
 ```{r,echo=F}
 x <- seq(-3,3,length=1000)
